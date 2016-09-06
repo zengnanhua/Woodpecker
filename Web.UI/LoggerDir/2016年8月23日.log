@@ -1,0 +1,111 @@
+2016/8/23 10:09:20  [ThreadID:81] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult AddMenu(Int32)”的不可以为 null 的类型“System.Int32”的参数“target”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：AddMenu
+2016/8/23 10:09:45  [ThreadID:81] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult AddMenu(Int32)”的不可以为 null 的类型“System.Int32”的参数“target”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：AddMenu
+2016/8/23 10:10:19  [ThreadID:81] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult AddMenu(Int32)”的不可以为 null 的类型“System.Int32”的参数“target”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：AddMenu
+2016/8/23 10:11:31  [ThreadID:12] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult AddMenu(Int32)”的不可以为 null 的类型“System.Int32”的参数“target”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：AddMenu
+2016/8/23 10:13:19  [ThreadID:12] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult AddMenu(Int32)”的不可以为 null 的类型“System.Int32”的参数“target”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：AddMenu
+2016/8/23 10:16:12  [ThreadID:11] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult AddMenu(Int32)”的不可以为 null 的类型“System.Int32”的参数“target”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：AddMenu
+2016/8/23 16:30:23  [ThreadID:16] Debug:消息类型：NullReferenceException<br>消息内容：未将对象引用设置到对象的实例。<br>引发异常的方法：System.Web.Mvc.ActionResult UpdateMenu(Web.EFEntity.Menu)<br>引发异常的对象：Web.Admin<br>异常目录：base<br>异常文件：UpdateMenu
+2016/8/23 16:30:29  [ThreadID:16] Debug:消息类型：NullReferenceException<br>消息内容：未将对象引用设置到对象的实例。<br>引发异常的方法：System.Web.Mvc.ActionResult UpdateMenu(Web.EFEntity.Menu)<br>引发异常的对象：Web.Admin<br>异常目录：base<br>异常文件：UpdateMenu
+2016/8/23 16:31:12  [ThreadID:16] Debug:消息类型：InvalidOperationException<br>消息内容：未找到视图“UpdateMenuView”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/base/UpdateMenuView.aspx
+~/Areas/Admin/Views/base/UpdateMenuView.ascx
+~/Areas/Admin/Views/Shared/UpdateMenuView.aspx
+~/Areas/Admin/Views/Shared/UpdateMenuView.ascx
+~/Views/base/UpdateMenuView.aspx
+~/Views/base/UpdateMenuView.ascx
+~/Views/Shared/UpdateMenuView.aspx
+~/Views/Shared/UpdateMenuView.ascx
+~/Areas/Admin/Views/base/UpdateMenuView.cshtml
+~/Areas/Admin/Views/base/UpdateMenuView.vbhtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.cshtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.vbhtml
+~/Views/base/UpdateMenuView.cshtml
+~/Views/base/UpdateMenuView.vbhtml
+~/Views/Shared/UpdateMenuView.cshtml
+~/Views/Shared/UpdateMenuView.vbhtml<br>引发异常的方法：System.Web.Mvc.ViewEngineResult FindView(System.Web.Mvc.ControllerContext)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：UpdateMenuView
+2016/8/23 16:31:21  [ThreadID:16] Debug:消息类型：InvalidOperationException<br>消息内容：未找到视图“UpdateMenuView”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/base/UpdateMenuView.aspx
+~/Areas/Admin/Views/base/UpdateMenuView.ascx
+~/Areas/Admin/Views/Shared/UpdateMenuView.aspx
+~/Areas/Admin/Views/Shared/UpdateMenuView.ascx
+~/Views/base/UpdateMenuView.aspx
+~/Views/base/UpdateMenuView.ascx
+~/Views/Shared/UpdateMenuView.aspx
+~/Views/Shared/UpdateMenuView.ascx
+~/Areas/Admin/Views/base/UpdateMenuView.cshtml
+~/Areas/Admin/Views/base/UpdateMenuView.vbhtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.cshtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.vbhtml
+~/Views/base/UpdateMenuView.cshtml
+~/Views/base/UpdateMenuView.vbhtml
+~/Views/Shared/UpdateMenuView.cshtml
+~/Views/Shared/UpdateMenuView.vbhtml<br>引发异常的方法：System.Web.Mvc.ViewEngineResult FindView(System.Web.Mvc.ControllerContext)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：UpdateMenuView
+2016/8/23 16:31:36  [ThreadID:16] Debug:消息类型：InvalidOperationException<br>消息内容：未找到视图“UpdateMenuView”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/base/UpdateMenuView.aspx
+~/Areas/Admin/Views/base/UpdateMenuView.ascx
+~/Areas/Admin/Views/Shared/UpdateMenuView.aspx
+~/Areas/Admin/Views/Shared/UpdateMenuView.ascx
+~/Views/base/UpdateMenuView.aspx
+~/Views/base/UpdateMenuView.ascx
+~/Views/Shared/UpdateMenuView.aspx
+~/Views/Shared/UpdateMenuView.ascx
+~/Areas/Admin/Views/base/UpdateMenuView.cshtml
+~/Areas/Admin/Views/base/UpdateMenuView.vbhtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.cshtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.vbhtml
+~/Views/base/UpdateMenuView.cshtml
+~/Views/base/UpdateMenuView.vbhtml
+~/Views/Shared/UpdateMenuView.cshtml
+~/Views/Shared/UpdateMenuView.vbhtml<br>引发异常的方法：System.Web.Mvc.ViewEngineResult FindView(System.Web.Mvc.ControllerContext)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：UpdateMenuView
+2016/8/23 16:32:14  [ThreadID:16] Debug:消息类型：InvalidOperationException<br>消息内容：未找到视图“UpdateMenuView”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/base/UpdateMenuView.aspx
+~/Areas/Admin/Views/base/UpdateMenuView.ascx
+~/Areas/Admin/Views/Shared/UpdateMenuView.aspx
+~/Areas/Admin/Views/Shared/UpdateMenuView.ascx
+~/Views/base/UpdateMenuView.aspx
+~/Views/base/UpdateMenuView.ascx
+~/Views/Shared/UpdateMenuView.aspx
+~/Views/Shared/UpdateMenuView.ascx
+~/Areas/Admin/Views/base/UpdateMenuView.cshtml
+~/Areas/Admin/Views/base/UpdateMenuView.vbhtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.cshtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.vbhtml
+~/Views/base/UpdateMenuView.cshtml
+~/Views/base/UpdateMenuView.vbhtml
+~/Views/Shared/UpdateMenuView.cshtml
+~/Views/Shared/UpdateMenuView.vbhtml<br>引发异常的方法：System.Web.Mvc.ViewEngineResult FindView(System.Web.Mvc.ControllerContext)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：UpdateMenuView
+2016/8/23 16:32:24  [ThreadID:16] Debug:消息类型：InvalidOperationException<br>消息内容：未找到视图“UpdateMenuView”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/base/UpdateMenuView.aspx
+~/Areas/Admin/Views/base/UpdateMenuView.ascx
+~/Areas/Admin/Views/Shared/UpdateMenuView.aspx
+~/Areas/Admin/Views/Shared/UpdateMenuView.ascx
+~/Views/base/UpdateMenuView.aspx
+~/Views/base/UpdateMenuView.ascx
+~/Views/Shared/UpdateMenuView.aspx
+~/Views/Shared/UpdateMenuView.ascx
+~/Areas/Admin/Views/base/UpdateMenuView.cshtml
+~/Areas/Admin/Views/base/UpdateMenuView.vbhtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.cshtml
+~/Areas/Admin/Views/Shared/UpdateMenuView.vbhtml
+~/Views/base/UpdateMenuView.cshtml
+~/Views/base/UpdateMenuView.vbhtml
+~/Views/Shared/UpdateMenuView.cshtml
+~/Views/Shared/UpdateMenuView.vbhtml<br>引发异常的方法：System.Web.Mvc.ViewEngineResult FindView(System.Web.Mvc.ControllerContext)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：UpdateMenuView
+2016/8/23 16:58:46  [ThreadID:45] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult GetSonMenuBtnJson(Int32)”的不可以为 null 的类型“System.Int32”的参数“meunId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：GetSonMenuBtnJson
+2016/8/23 16:58:52  [ThreadID:45] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult GetSonMenuBtnJson(Int32)”的不可以为 null 的类型“System.Int32”的参数“meunId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：GetSonMenuBtnJson
+2016/8/23 16:59:37  [ThreadID:45] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult GetSonMenuBtnJson(Int32)”的不可以为 null 的类型“System.Int32”的参数“meunId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：GetSonMenuBtnJson
+2016/8/23 17:00:07  [ThreadID:45] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult GetSonMenuBtnJson(Int32)”的不可以为 null 的类型“System.Int32”的参数“meunId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：GetSonMenuBtnJson
+2016/8/23 17:00:40  [ThreadID:9]  Debug:消息类型：NotSupportedException<br>消息内容：LINQ to Entities does not recognize the method 'Web.EFEntity.Menu ToPOCO()' method, and this method cannot be translated into a store expression.<br>引发异常的方法：System.Data.Entity.Core.Common.CommandTrees.DbExpression Translate(System.Data.Entity.Core.Objects.ELinq.ExpressionConverter, System.Linq.Expressions.MethodCallExpression)<br>引发异常的对象：EntityFramework<br>异常目录：base<br>异常文件：GetSonMenuBtnJson
+2016/8/23 17:00:45  [ThreadID:9]  Debug:消息类型：NotSupportedException<br>消息内容：LINQ to Entities does not recognize the method 'Web.EFEntity.Menu ToPOCO()' method, and this method cannot be translated into a store expression.<br>引发异常的方法：System.Data.Entity.Core.Common.CommandTrees.DbExpression Translate(System.Data.Entity.Core.Objects.ELinq.ExpressionConverter, System.Linq.Expressions.MethodCallExpression)<br>引发异常的对象：EntityFramework<br>异常目录：base<br>异常文件：GetSonMenuBtnJson
+2016/8/23 18:06:27  [ThreadID:51] Debug:消息类型：ArgumentException<br>消息内容：对于“Web.Admin.Controllers.BaseController”中方法“System.Web.Mvc.ActionResult AddFunctionMenu(Int32)”的不可以为 null 的类型“System.Int32”的参数“i”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters<br>引发异常的方法：System.Object ExtractParameterFromDictionary(System.Reflection.ParameterInfo, System.Collections.Generic.IDictionary`2[System.String,System.Object], System.Reflection.MethodInfo)<br>引发异常的对象：System.Web.Mvc<br>异常目录：base<br>异常文件：AddFunctionMenu

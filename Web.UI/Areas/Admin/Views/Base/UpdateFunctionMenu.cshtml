@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "UpdateFunctionMenu";
+}
+<link href="/Content/plugins/jquery-easyui-1.4.3/themes/icon.css" rel="stylesheet" />
+<link href="/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/Content/plugins/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="/Content/plugins/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<link href="/Content/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<link href="/Content/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+<script src="/Content/js/jquery.js"></script>
+<script src="/Content/layer/layer.js"></script>
+
+<script src="/Content/jsHelp/jsHelp.js"></script>
+<script type="text/javascript">
+
+    function changeIcon() {
+        //把选中的 图标样式 设置给 演示的 div
+        document.getElementById("imgIco").className = this.value;
+        //$("#imgIco").class = this.value;
+    }
+
+    //保存
+    function Save() {
+      
+        if (!JsHelp.ValidateFrom.Validate("#fd")) {
+            return;
+        }
+        var postData = {
+        };
+
+        postData.MenuId = $("#menu_id").val();
+        postData.MenuName = $("#menu_name").val();
+        postData.Area = $("#Area").val();
+        postData.ControllerName = $("#ControllerName").val();
+        postData.ActionName = $("#ActionName").val();
+        postData.OrderNo = $("#menuOrder").val();
+        postData.Type = $("#Type").val();
+        postData.Method = $("#method").val();
+        postData.ToolIco = $("#ToolIco").val();
+        JsHelp.Ajax("/admin/base/UpdateFunctionMenu", postData, function (data) {
+            parent.$('#tbList').datagrid('reload');
+            parent.layer.closeAll();
+
+            //$('#menuTree').tree("reload");
+        });
+
+    }
+    $(function () {
+        $("#ToolIco").change(changeIcon);
+      
+    });
+</script>
+
+<div class="box box-solid">
+    <div class="box-body">
+        <div id="world-map" style="height: 720px; width: 100%; margin-top: -10px">
+            <form class="form-horizontal" id="fd" role="form">
+
+                 <div class="form-group">
+                    <label for="menu_id" class="col-sm-2 control-label">菜单Id:</label>
+                    <div class="col-sm-10">
+                        <input type="text" disabled="disabled" class="form-control" id="menu_id"
+                            placeholder="">
+                    </div>
+                </div>
+
+               <div class="form-group">
+                    <label for="menu_name" class="col-sm-2 control-label">菜单名字:</label>
+                    <div class="col-sm-10">
+                        <input type="text" validate="isNotNull" err="菜单名字不能为空" class="form-control" id="menu_name"
+                            placeholder="菜单名字">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Area" class="col-sm-2 control-label">区域名Area:</label>
+                    <div class="col-sm-10">
+                        <input type="text" validate="isNotNull" err="区域名不能为空" class="form-control" id="Area" placeholder="区域名Area">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="控制器名ControllerName" class="col-sm-2 control-label">控制器名Controller:</label>
+                    <div class="col-sm-10">
+                        <input type="text" validate="isNotNull" err="控制器名不能为空" class="form-control" id="ControllerName" placeholder="控制器名ControllerName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ActionName" class="col-sm-2 control-label">方法名ActionName:</label>
+                    <div class="col-sm-10">
+                        <input type="text" validate="isNotNull" err="方法名ActionName不能为空" class="form-control" id="ActionName"
+                            placeholder="方法名ActionName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="menuUrl" class="col-sm-2 control-label">排序值:</label>
+                    <div class="col-sm-10">
+                        <input type="text" value="30" validate="isNotNull" err="排序值不能为空" class="form-control" id="menuOrder" placeholder="排序">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ToolIco" class="col-sm-2 control-label">Ico:<span class="icon-add" id="imgIco">&nbsp;&nbsp;&nbsp;&nbsp;</span></label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="ToolIco">
+                            @foreach(var obj in Web.Admin.Help.IconClassName.DDLData)
+                            {
+                                <option value="@obj.Value">@obj.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Type" class="col-sm-2 control-label">功能类型:</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="Type">
+                            <option value="2">按钮</option>
+                            <option value="3" selected="selected">其他</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="method" class="col-sm-2 control-label">请求方式:</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="method">
+                            <option value="1">Get</option>
+                            <option value="2">Post</option>
+                            <option value="3" selected="selected">BOTH</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-10 col-sm-10">
+                        <input type="button" class="btn btn-info pull-right" onclick="Save()" value="保存" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

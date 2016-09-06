@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4E9AB00B-AC01-4D95-809F-1F13CEC6E3E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Web.Respository</RootNamespace>
+    <AssemblyName>Web.Respository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AOTest.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AOTest.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseRespository.cs" />
+    <Compile Include="DBSession.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSession.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFFatory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RespositoryClass\MenuRespository.cs">
+      <DependentUpon>RespositoryClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RespositoryClass\OtherMenuRespository.cs">
+      <DependentUpon>RespositoryClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RespositoryClass\RespositoryClass.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RespositoryClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RespositoryClass\RoleRespository.cs">
+      <DependentUpon>RespositoryClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RespositoryClass\R_Role_MenuRespository.cs">
+      <DependentUpon>RespositoryClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RespositoryClass\R_UserInfo_RoleRespository.cs">
+      <DependentUpon>RespositoryClass.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RespositoryClass\UserInfoRespository.cs">
+      <DependentUpon>RespositoryClass.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AOTest.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AOTest.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DBSession.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBSession.cs</LastGenOutput>
+    </Content>
+    <Content Include="RespositoryClass\RespositoryClass.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RespositoryClass.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NanHuaDDD\NanHuaDDD.csproj">
+      <Project>{cb0361c8-ebcf-4cb1-8e12-1fd56e254842}</Project>
+      <Name>NanHuaDDD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.IRespository\Web.IRespository.csproj">
+      <Project>{dd18a13a-53f7-4629-b5d7-54c816c68241}</Project>
+      <Name>Web.IRespository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Model\Web.EFEntity.csproj">
+      <Project>{737dc5ea-c446-4dd5-ac61-7eca7f0ce1d6}</Project>
+      <Name>Web.EFEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="RespositoryClassEx\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

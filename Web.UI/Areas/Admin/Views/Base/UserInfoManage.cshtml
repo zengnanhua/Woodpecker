@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "UserInfoManage";
+    Layout = "../Share/_Layout.cshtml";
+}
+@using Web.Admin.Extension
+<script type="text/ecmascript">
+    $(function () {
+        JsHelp.datagridPara.init("/admin/base/RoleIndex", [@Html.GetSonBtnJs()],
+            [[
+            { field: 'RoleId', title: '角色Id', width: 50 },
+            { field: 'RoleName', title: '角色名称', width: 50 },
+            { field: 'RoleDiscription', title: '角色描述', width: 50 },
+            {
+                field: 'IsLoginBack', title: '是否能登录后台', align: 'center', width: 50, formatter: function (value, row, index) {
+                    if (value) {
+                        return '<span class="icon-ok">&nbsp;&nbsp;&nbsp;&nbsp;</span>'
+                    }
+                    return '<span class="icon-no">&nbsp;&nbsp;&nbsp;&nbsp;</span>'
+                }
+            }
+
+            ]]);
+        $("#grid_UserInfo").datagrid(JsHelp.datagridPara.paras);
+    });
+</script>
+
+<section class="content-header">
+    <h1>角色管理<small></small></h1> 
+</section>
+<!-- Main content -->
+<section class="content">
+   
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title text-center">角色管理</h3>
+                </div>
+                     <div>
+                        <table style="height: 600px" id="grid_UserInfo"></table>
+                     </div>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row-->
+</section>

@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Role";
+    Layout = "../Share/_Layout.cshtml";
+}
+@using Web.Admin.Extension
+<script type="text/javascript">
+    //添加菜单
+    function AddRole()
+    {
+        JsHelp.OpenWindow("/admin/base/AddRole", "添加角色", 400, 300, function (ly, index) {
+        });
+    }
+    //更新菜单
+    function UpdateRole()
+    {
+        var obj = $('#grid_Role').datagrid('getSelected');
+        if (obj == null) {
+            JsHelp.ShowNo("请选择列表")
+            return;
+        }
+
+        JsHelp.OpenWindow("/admin/base/UpdateRole", "修改角色", 400, 380, function (ly, index) {
+            var body = layer.getChildFrame('body', index);
+            var obj = $('#grid_Role').datagrid('getSelected');
+            body.contents().find("#RoleId").val(obj.RoleId);
+            body.contents().find("#RoleName").val(obj.RoleName);
+            body.contents().find("#RoleDiscription").val(obj.RoleDiscription);
+            body.contents().find("#IsLoginBack").val(obj.IsLoginBack+"");
+        });
+    }
+    //删除菜单
+    function DeleteRole()
+    {
+        var obj = $('#grid_Role').datagrid('getSelected');
+        if (obj == null) {
+            JsHelp.ShowNo("请选择列表")
+            return;
+        }
+
+        var postData = {};
+        postData.RoleId = obj.RoleId;
+        JsHelp.Ajax("/admin/base/DeleteRole", postData, function (data) {
+            parent.$('#grid_Role').datagrid('reload');
+            parent.layer.closeAll();
+        });
+    }
+
+    //设置权限
+    function SetRight()
+    {
+        var obj = $('#grid_Role').datagrid('getSelected');
+        if (obj == null) {
+            JsHelp.ShowNo("请选择列表")
+            return;
+        }
+
+        JsHelp.OpenWindow("/admin/base/SetRight?RoleId="+obj.RoleId, "设置权限", 300, 650, function (ly, index) {
+        });
+    }
+
+    $(function () {
+        JsHelp.datagridPara.init("/admin/base/RoleIndex", [@Html.GetSonBtnJs()],
+             [[
+             { field: 'RoleId', title: '角色Id', width: 50 },
+             { field: 'RoleName', title: '角色名称', width: 50 },
+             { field: 'RoleDiscription', title: '角色描述', width: 50 },  
+             {
+                 field: 'IsLoginBack', title: '是否能登录后台', align: 'center', width: 50, formatter: function (value, row, index) {
+                     if (value)
+                     {
+                         return '<span class="icon-ok">&nbsp;&nbsp;&nbsp;&nbsp;</span>'
+                     }
+                     return '<span class="icon-no">&nbsp;&nbsp;&nbsp;&nbsp;</span>'
+                 }
+             }
+
+             ]]);
+        $("#grid_Role").datagrid(JsHelp.datagridPara.paras);
+    })
+</script>
+
+<section class="content-header">
+    <h1>角色管理<small></small></h1> 
+</section>
+<!-- Main content -->
+<section class="content">
+   
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title text-center">角色管理</h3>
+                </div>
+                     <div>
+                        <table style="height: 600px" id="grid_Role"></table>
+                     </div>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row-->
+</section>

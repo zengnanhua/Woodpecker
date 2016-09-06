@@ -1,0 +1,1 @@
+2016/8/19 10:31:32  [ThreadID:40] Debug:消息类型：InvalidOperationException<br>消息内容：序列包含一个以上的匹配元素<br>引发异常的方法：TSource SingleOrDefault[TSource](System.Collections.Generic.IEnumerable`1[TSource], System.Func`2[TSource,System.Boolean])<br>引发异常的对象：System.Core<br>异常目录：base<br>异常文件：MenuManage

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="796860e66bdf4ac39e2603ade73a9144" Name="关系图1" ZoomLevel="94">
+        <EntityTypeShape EntityType="WebModel.Menu" Width="1.5" PointX="0.00069863721760857721" PointY="13.244309282509754" />
+        <EntityTypeShape EntityType="WebModel.OtherMenu" Width="1.5" PointX="10.323489540407197" PointY="30.24877042986861" />
+        <EntityTypeShape EntityType="WebModel.R_Role_Menu" Width="1.5" PointX="4.1854605861871788" PointY="29.04385098677308" />
+        <EntityTypeShape EntityType="WebModel.R_UserInfo_Role" Width="1.5" PointX="10.412706489866929" PointY="30.671999543286859" />
+        <EntityTypeShape EntityType="WebModel.Role" Width="1.5" PointX="7.5817879883487649" PointY="28.741899310025339" />
+        <EntityTypeShape EntityType="WebModel.UserInfo" Width="1.5" PointX="9.3835228352730731" PointY="19.63869310339852" />
+        <AssociationConnector Association="WebModel.FK_OTHERMEN_REFERENCE_MENU" />
+        <AssociationConnector Association="WebModel.FK_R_ROLE_M_REFERENCE_MENU" />
+        <AssociationConnector Association="WebModel.FK_R_ROLE_M_REFERENCE_ROLE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

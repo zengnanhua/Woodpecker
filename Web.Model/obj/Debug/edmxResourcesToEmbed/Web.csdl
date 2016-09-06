@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WebEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Menu" EntityType="WebModel.Menu" />
+    <EntitySet Name="OtherMenu" EntityType="WebModel.OtherMenu" />
+    <EntitySet Name="R_Role_Menu" EntityType="WebModel.R_Role_Menu" />
+    <EntitySet Name="R_UserInfo_Role" EntityType="WebModel.R_UserInfo_Role" />
+    <EntitySet Name="Role" EntityType="WebModel.Role" />
+    <EntitySet Name="UserInfo" EntityType="WebModel.UserInfo" />
+    <AssociationSet Name="FK_OTHERMEN_REFERENCE_MENU" Association="WebModel.FK_OTHERMEN_REFERENCE_MENU">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="OtherMenu" EntitySet="OtherMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_R_ROLE_M_REFERENCE_MENU" Association="WebModel.FK_R_ROLE_M_REFERENCE_MENU">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="R_Role_Menu" EntitySet="R_Role_Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_R_ROLE_M_REFERENCE_ROLE" Association="WebModel.FK_R_ROLE_M_REFERENCE_ROLE">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="R_Role_Menu" EntitySet="R_Role_Menu" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Type="Int32" Name="MenuId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="MenuName" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="FatherID" />
+    <Property Type="String" Name="Area" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ControllerName" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ActionName" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="OrderNo" />
+    <Property Type="Boolean" Name="IsDelete" />
+    <Property Type="Int32" Name="Type" />
+    <Property Type="Int32" Name="Method" />
+    <Property Type="String" Name="ToolIco" MaxLength="32" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OtherMenu" Relationship="WebModel.FK_OTHERMEN_REFERENCE_MENU" FromRole="Menu" ToRole="OtherMenu" />
+    <NavigationProperty Name="R_Role_Menu" Relationship="WebModel.FK_R_ROLE_M_REFERENCE_MENU" FromRole="Menu" ToRole="R_Role_Menu" />
+  </EntityType>
+  <EntityType Name="OtherMenu">
+    <Key>
+      <PropertyRef Name="OtherMenuId" />
+    </Key>
+    <Property Type="Int32" Name="OtherMenuId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="MenuId" />
+    <NavigationProperty Name="Menu" Relationship="WebModel.FK_OTHERMEN_REFERENCE_MENU" FromRole="OtherMenu" ToRole="Menu" />
+  </EntityType>
+  <EntityType Name="R_Role_Menu">
+    <Key>
+      <PropertyRef Name="R_Role_MenuId" />
+    </Key>
+    <Property Type="Int32" Name="R_Role_MenuId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="RoleId" />
+    <Property Type="Int32" Name="MenuId" />
+    <NavigationProperty Name="Menu" Relationship="WebModel.FK_R_ROLE_M_REFERENCE_MENU" FromRole="R_Role_Menu" ToRole="Menu" />
+    <NavigationProperty Name="Role" Relationship="WebModel.FK_R_ROLE_M_REFERENCE_ROLE" FromRole="R_Role_Menu" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="R_UserInfo_Role">
+    <Key>
+      <PropertyRef Name="R_UserInfo_RoleId" />
+    </Key>
+    <Property Type="Int32" Name="R_UserInfo_RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="RoleId" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="RoleName" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RoleDiscription" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="IsLoginBack" />
+    <Property Type="Boolean" Name="IsDelete" />
+    <NavigationProperty Name="R_Role_Menu" Relationship="WebModel.FK_R_ROLE_M_REFERENCE_ROLE" FromRole="Role" ToRole="R_Role_Menu" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserInfoId" />
+    </Key>
+    <Property Type="Int32" Name="UserInfoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Pwd" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="HeadImgPath" MaxLength="128" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_OTHERMEN_REFERENCE_MENU">
+    <End Type="WebModel.Menu" Role="Menu" Multiplicity="0..1" />
+    <End Type="WebModel.OtherMenu" Role="OtherMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="MenuId" />
+      </Principal>
+      <Dependent Role="OtherMenu">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_R_ROLE_M_REFERENCE_MENU">
+    <End Type="WebModel.Menu" Role="Menu" Multiplicity="0..1" />
+    <End Type="WebModel.R_Role_Menu" Role="R_Role_Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="MenuId" />
+      </Principal>
+      <Dependent Role="R_Role_Menu">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_R_ROLE_M_REFERENCE_ROLE">
+    <End Type="WebModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="WebModel.R_Role_Menu" Role="R_Role_Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="R_Role_Menu">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

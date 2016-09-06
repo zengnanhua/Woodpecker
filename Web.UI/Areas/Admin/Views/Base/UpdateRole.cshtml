@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "UpdateRole";
+}
+
+<link href="/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/Content/plugins/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="/Content/plugins/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<link href="/Content/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<link href="/Content/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+<script src="/Content/js/jquery.js"></script>
+<script src="/Content/layer/layer.js"></script>
+
+<script src="/Content/jsHelp/jsHelp.js"></script>
+<script type="text/javascript">
+    function Save()
+    {
+        if (!JsHelp.ValidateFrom.Validate("#fd")) {
+            return;
+        }
+        var postData = {};
+        postData.RoleId = $("#RoleId").val();
+        postData.RoleName = $("#RoleName").val();
+        postData.RoleDiscription = $("#RoleDiscription").val();
+        postData.IsLoginBack = $("#IsLoginBack").val();
+        JsHelp.Ajax("/admin/base/UpdateRole", postData, function (data) {
+            parent.$('#grid_Role').datagrid('reload');
+            parent.layer.closeAll();
+        });
+    }
+
+</script>
+
+
+<div class="box box-solid">
+    <div class="box-body">
+        <div id="world-map" style=" width: 100%; margin-top: -10px">
+            <form class="form-horizontal" id="fd" role="form">
+
+               <div class="form-group">
+                    <label for="RoleId" class="col-sm-2 control-label">角色Id:</label>
+                    <div class="col-sm-10">
+                        <input type="text" disabled="disabled" class="form-control" id="RoleId"
+                            placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="RoleName" class="col-sm-2 control-label">角色名称:</label>
+                    <div class="col-sm-10">
+                        <input type="text" validate="isNotNull" err="角色名称不能为空" class="form-control" id="RoleName"
+                            placeholder="角色名称">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="RoleDiscription" class="col-sm-2 control-label">角色描述:</label>
+                    <div class="col-sm-10">
+                        <input type="text" validate="isNotNull" err="角色描述不能为空" class="form-control" id="RoleDiscription" placeholder="角色描述">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="IsLoginBack" class="col-sm-2 control-label">是否可以登录后台:</label>
+                    <div class="col-sm-10">
+                        <select id="IsLoginBack">
+                            <option value="true">允许</option>
+                            <option value="false">不允许</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-offset-10 col-sm-10">
+                        <input type="button" class="btn btn-info pull-right" onclick="Save()" value="保存" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

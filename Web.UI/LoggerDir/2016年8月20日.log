@@ -1,0 +1,9 @@
+2016/8/20 10:36:19  [ThreadID:11] Debug:消息类型：InvalidOperationException<br>消息内容：未找到视图“index”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Views/login/index.aspx
+~/Views/login/index.ascx
+~/Views/Shared/index.aspx
+~/Views/Shared/index.ascx
+~/Views/login/index.cshtml
+~/Views/login/index.vbhtml
+~/Views/Shared/index.cshtml
+~/Views/Shared/index.vbhtml<br>引发异常的方法：System.Web.Mvc.ViewEngineResult FindView(System.Web.Mvc.ControllerContext)<br>引发异常的对象：System.Web.Mvc<br>异常目录：login<br>异常文件：index

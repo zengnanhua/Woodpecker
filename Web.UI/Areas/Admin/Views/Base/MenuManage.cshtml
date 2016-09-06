@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "MenuManage";
+    Layout = "../Share/_Layout.cshtml";
+}
+@using Web.Admin.Extension
+<script type="text/javascript">
+
+    //添加菜单
+    function AddMenu() {
+
+
+        var postData = {
+        };
+        var obj = $('#menuTree').tree('getSelected');
+        postData.target = obj.id;
+
+        JsHelp.Ajax("/admin/base/AddMenu", postData, function (data) {
+            $('#menuTree').tree("reload");
+        });
+    }
+    function UpdateMenu() {
+        JsHelp.OpenWindow("/admin/base/UpdateMenu", "菜单管理", 600, 600, function (ly, index) {
+            var body = layer.getChildFrame('body', index);
+            var obj = $('#menuTree').tree('getSelected');
+            body.contents().find("#menu_id").val(obj.id);
+            body.contents().find("#menu_name").val(obj.text);
+            body.contents().find("#Area").val(obj.attributes.Area);
+            body.contents().find("#ControllerName").val(obj.attributes.ControllerName);
+            body.contents().find("#ActionName").val(obj.attributes.ActionName);
+            body.contents().find("#menuOrder").val(obj.attributes.OrderNo);
+        });
+    }
+
+    //移动菜单
+    function MoveMenu(target, source, point) {
+        var postData = {
+
+        };
+        if (point == "append") {
+            postData.target = $("#menuTree").tree("getNode", target).id;
+            postData.source = source.id
+        }
+        else {
+            postData.target = $("#menuTree").tree("getParent", target).id;
+            postData.source = source.id
+        }
+        JsHelp.Ajax("/admin/base/DropMenu", postData, function (data) {
+
+        });
+
+    }
+    //删除菜单
+    function DeleteMenu() {
+        var postData = {
+        };
+        var obj = $('#menuTree').tree('getSelected');
+        postData.source = obj.id;
+        JsHelp.Ajax("/admin/base/DeleteMenu", postData, function (data) {
+            $('#menuTree').tree("reload");
+        });
+    }
+    //添加菜单子功能
+    function AddFunctionMenu()
+    {
+        var obj = $('#menuTree').tree('getSelected');
+        if (obj == null) {
+            JsHelp.ShowNo("请选择菜单")
+            return;
+        }
+       
+        JsHelp.OpenWindow("/admin/base/AddFunctionMenu", "添加菜单子功能", 600, 750, function (ly, index) {
+            var body = layer.getChildFrame('body', index);
+            var obj = $('#menuTree').tree('getSelected');
+           
+            body.contents().find("#FatherId").val(obj.id);
+        });
+    }
+    //修改菜单功能
+    function UpdateFunctionMenu()
+    {
+        var obj = $('#tbList').datagrid('getSelected');
+        if (obj == null) {
+            JsHelp.ShowNo("请选择列表")
+            return;
+        }
+        JsHelp.OpenWindow("/admin/base/UpdateFunctionMenu", "修改菜单子功能", 600, 750, function (ly, index) {
+            var body = layer.getChildFrame('body', index);
+            var obj = $('#tbList').datagrid('getSelected');
+            body.contents().find("#menu_id").val(obj.MenuId);
+            body.contents().find("#menu_name").val(obj.MenuName);
+            body.contents().find("#Area").val(obj.Area);
+            body.contents().find("#ControllerName").val(obj.ControllerName);
+            body.contents().find("#ActionName").val(obj.ActionName);
+            body.contents().find("#menuOrder").val(obj.OrderNo);
+            body.contents().find("#Type").val(obj.Type);
+            body.contents().find("#Method").val(obj.Method); 
+            body.contents().find("#ToolIco").val(obj.ToolIco);
+            
+            body.contents().find("#imgIco")[0].className = obj.ToolIco;
+        });
+    }
+    //删除功能菜单
+    function DeleteFunctionMenu()
+    {
+        var obj = $('#tbList').datagrid('getSelected');
+        if (obj == null) {
+            JsHelp.ShowNo("请选择列表")
+            return;
+        }
+        var postData = {
+        };
+        postData.MenuId = obj.MenuId;
+        JsHelp.Ajax("/admin/base/DeleteFunctionMenu", postData, function (data) {
+            $('#tbList').datagrid("reload");
+        });
+    }
+    $(function () {
+        $("#menuTree").tree({
+            url: "/admin/base/MenuManageJson",
+            lines: true,
+            dnd: true,
+            onContextMenu: function (e, node) {
+                e.preventDefault();
+                // 查找节点
+                $('#menuTree').tree('select', node.target);
+                // 显示快捷菜单
+                $('#mm').menu('show', {
+                    left: e.pageX,
+                    top: e.pageY
+                });
+            },
+            onBeforeDrop: function (target, source, point) {
+
+                if ($("#menuTree").tree("getNode", target).id == "1" && point != "append") {
+                    return false;
+                }
+            },
+            onClick: function (node) {
+                if ($("#menuTree").tree("isLeaf", node.target))
+                {
+                    $('#tbList').datagrid('load', {
+                        meunId: node.id
+                    });
+                }
+            },
+            onDrop: function (target, source, point) {
+                MoveMenu(target, source, point);
+            }
+        });
+
+        JsHelp.datagridPara.init("/admin/base/GetSonMenuBtnJson", [@Html.GetSonBtnJs()],
+              [[
+              { field: 'MenuName', title: '菜单名称', width: 50 },
+              { field: 'Area', title: '区域名', width: 50 },
+              { field: 'ControllerName', title: '控制器名', width: 50 },
+              { field: 'ActionName', title: '方法名', width: 50 },
+              { field: 'OrderNo', title: '排序号', width: 50 },
+              {
+                  field: 'Method', title: '请求方式', width: 50, formatter: function (value, row, index) {
+                    
+                      switch (value) {
+                          case 1:
+                              return "GET";
+                          case 2:
+                              return "POST";
+                          case 3:
+                              return "BOTH";
+                      }
+                  }
+              },
+               {
+                   field: 'Type', title: '类型', width: 50, formatter: function (value, row, index) {
+                     
+                       switch (value) {
+                           case 1:
+                               return "菜单";
+                           case 2:
+                               return "按钮";
+                           case 3:
+                               return "其他";
+                       }
+                   }
+               },
+               { field: 'ToolIco', title: '标题图片', width: 50 },
+               
+              ]]);
+        $("#tbList").datagrid(JsHelp.datagridPara.paras);
+    })
+</script>
+
+<section class="content-header">
+    <h1>菜单管理<small></small></h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <input type="hidden" id="TreeID" />
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title text-center">菜单管理</h3>
+                </div>
+
+                <div id="win_laout" class="easyui-layout" data-options="fit:true" style="height: 720px;">
+                    <div data-options="region:'west',title:'',split:true" style="width: 200px;">
+                        <ul id="menuTree"></ul>
+                    </div>
+                    <div data-options="region:'center',title:''" style="padding: 5px; background: #eee;">
+                        <span  class="label label-danger">1.菜单的添加,删除，修改请点击右侧菜单<br />
+                            2.下面列表是添加菜单的子权限
+                        </span>
+
+                        <table id="tbList" style="height:400px"></table>
+                    </div>
+
+                </div>
+
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row-->
+
+</section>
+
+
+
+<div id="mm" class="easyui-menu" style="width: 120px;">
+    <div onclick="AddMenu()" data-options="iconCls:'icon-add'">添加</div>
+    <div onclick="DeleteMenu()" data-options="iconCls:'icon-remove'">删除</div>
+    <div onclick="UpdateMenu()" data-options="iconCls:'icon-remove'">修改</div>
+</div>

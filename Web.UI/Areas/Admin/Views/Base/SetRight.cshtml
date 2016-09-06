@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "SetRight";
+}
+
+<link href="/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/Content/plugins/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="/Content/plugins/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<link href="/Content/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<link href="/Content/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+<script src="/Content/js/jquery.js"></script>
+
+<link href="/Content/plugins/jquery-easyui-1.4.3/themes/default/easyui.css" rel="stylesheet" />
+<link href="/Content/plugins/jquery-easyui-1.4.3/themes/icon.css" rel="stylesheet" />
+<script src="/Content/plugins/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
+<script src="/Content/plugins/jquery-easyui-1.4.3/locale/easyui-lang-zh_CN.js"></script>
+
+<script src="/Content/layer/layer.js"></script>
+<script src="/Content/js/learunui-validator.js"></script>
+<script src="/Content/jsHelp/jsHelp.js"></script>
+
+<script type="text/javascript">
+
+    //保存权限菜单
+    function Save() {
+        var menus = "";
+        var checkedNodes = $('#menuTree').tree('getChecked');
+        var indeterminateNodes = $('#menuTree').tree('getChecked', 'indeterminate');
+        for (var i = 0; i < checkedNodes.length; i++) {
+            menus += checkedNodes[i].id + ','
+        }
+        for (var i = 0; i < indeterminateNodes.length; i++) {
+
+            if (i == indeterminateNodes.length - 1) {
+                menus += indeterminateNodes[i].id;
+            }
+            else {
+                menus += indeterminateNodes[i].id + ',';
+            }
+        }
+        var RoleId = JsHelp.GetUrlParam("RoleId");
+        if (menus == "")
+        {
+            menus = "clear";
+        }
+        var postData = {
+            RoleId: RoleId,
+            menus: menus
+        };
+
+        JsHelp.Ajax("/admin/base/SetRight", postData, function (data) {
+            parent.layer.closeAll();
+        });
+
+    }
+    $(function () {
+        var RoleId = JsHelp.GetUrlParam("RoleId");
+        $("#menuTree").tree({
+            url: "/admin/base/SetRight?RoleId=" + RoleId,
+            lines: true,
+            checkbox: true
+        });
+    });
+</script>
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div >
+                    <div id="cc" class="easyui-layout" style="width: 250px; height: 550px;">
+                       
+                        <div data-options="region:'center',title:'设置权限'" style="padding: 5px; background: #eee;">
+                            <ul id="menuTree"></ul>
+                        </div>
+                       
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-10 col-sm-10">
+                            <input type="button" class="btn btn-info pull-right" onclick="Save()" value="保存" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row-->
+</section>
+
